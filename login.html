@@ -1,73 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Healthcare Advisor - Login</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f8ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .login-container {
-            background-color: white;
-            padding: 2em;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
-        input[type="text"], input[type="password"] {
-            width: 90%;
-            padding: 0.8em;
-            margin: 0.5em 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        button {
-            background-color: #008080;
-            color: white;
-            padding: 0.8em 1.5em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 1em;
-        }
-        .signup-link {
-            margin-top: 1em;
-            display: block;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | E-Healthcare Advisor</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button id="loginButton">Login</button>
-        <br>
-        <br>
-        <a href="newreg.html">New user? Sign up</a>
-    </div>
+<body class="page-with-sticky-footer">
+  <main class="form-shell">
+    <section class="card">
+      <p class="kicker">Welcome Back</p>
+      <h1>Login</h1>
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button class="btn" type="submit">Sign In</button>
+        <p class="helper" style="margin-top: 1rem;">New here? <a href="newreg.html">Create an account</a></p>
+        <div id="loginFeedback" class="feedback" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
 
-    <script>
-        document.getElementById('loginButton').addEventListener('click', function() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async function (event) {
+      event.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
 
-            if (username && password) {
-                alert('Login successful! (Redirecting to main page - not implemented)');
-                window.location.href = 'main_page.html';
-            } else {
-                alert('Please enter a username and password.');
-            }
+      if (!username || !password) {
+        showFeedback("loginFeedback", "error", "Please enter both username and password.");
+        return;
+      }
+
+      try {
+        const data = await AppApi.request("/auth/login", {
+          method: "POST",
+          body: JSON.stringify({ username, password })
         });
-    </script>
+        AppApi.setAuth(data.token, data.user);
+        showFeedback("loginFeedback", "success", "Login successful. Redirecting...");
+        setTimeout(function () {
+          window.location.href = "project.html";
+        }, 700);
+      } catch (error) {
+        showFeedback("loginFeedback", "error", error.message);
+      }
+    });
+  </script>
 </body>
 </html>
+

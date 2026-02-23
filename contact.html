@@ -1,77 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Healthcare Advisor - Contact Us</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f8ff;
-            color: #333;
-            line-height: 1.6;
-        }
-        header {
-            background-color: #008080;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-        }
-        main {
-            padding: 2em;
-            text-align: center;
-        }
-        h2 {
-            color: #0066cc;
-            margin-bottom: 1em;
-        }
-        .contact-section {
-            margin-bottom: 1.5em;
-            padding: 1.5em;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .contact-section h3 {
-            color: #008080;
-            margin-bottom: 0.5em;
-            font-size: 1.2em;
-        }
-        a {
-            color: #008080;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | E-Healthcare Advisor</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
-    <header>
-        <h1>Contact Us</h1>
-    </header>
-    <main>
-        <h2>Any queries, contact us from:</h2>
-        <div class="contact-section">
-            <h3>Mail</h3>
-            <p> Our Mail ID is as follows: <b>healtcareassist@gmail.com</b>
-                <br>
-                Do reach out! we'll try our best to respond as soon as possible!
-        </div>
-        <div class="contact-section">
-            <h3>Number</h3>
-            <p>Our toll free number for calls <b>000xxx</b>
-            <br>
-            Calls accepted from 9:00 am IST to 5:00 pm IST
-        </p>
-        </div>
-        <div class="contact-section">
-            <h3>A Referral Now (AI Assistant)</h3>
-            <p>In case of queries within the website use our AI powered Chatbot for any further clarifications!</p>
-            <p><a href="ai.html">Start Chat with AI Assistant</a></p>
-        </div>
-    </main>
+<body class="page-with-sticky-footer">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="project.html">E-Healthcare Advisor</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="project.html">Home</a>
+        <a href="doc.html">Specializations</a>
+        <a href="app.html">Appointments</a>
+        <a href="art.html">Articles</a>
+        <a href="contact.html">Contact</a>
+        <a href="ai.html">AI Assistant</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="kicker">Support Desk</p>
+      <h1>Contact Us</h1>
+      <p>For non-emergency support, use any of the channels below.</p>
+    </section>
+
+    <section class="grid grid-3" style="margin-top: 1rem;">
+      <article class="card">
+        <h3>Email</h3>
+        <p>healthcareassist@gmail.com</p>
+      </article>
+      <article class="card">
+        <h3>Phone</h3>
+        <p>000-XXX (Toll-free)</p>
+        <p class="helper">Available 9:00 AM to 5:00 PM</p>
+      </article>
+      <article class="card">
+        <h3>AI Assistant</h3>
+        <p>Need quick guidance inside the portal?</p>
+        <a class="btn" href="ai.html">Start Chat</a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="currentYear"></span> E-Healthcare Advisor</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
+

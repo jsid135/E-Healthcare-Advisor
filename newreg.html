@@ -1,135 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Healthcare Advisor - Sign Up</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f8ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .signup-container {
-            background-color: white;
-            padding: 2em;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            text-align: center;
-        }
-        input[type="text"], input[type="password"], input[type="date"] {
-            width: 90%;
-            padding: 0.8em;
-            margin: 0.5em 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        button {
-            background-color: #008080;
-            color: white;
-            padding: 0.8em 1.5em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 1em;
-        }
-        .login-link {
-            margin-top: 1em;
-            display: block;
-        }
-        .form-group {
-            text-align: left;
-            margin-bottom: 0.5em;
-        }
-        .form-group label{
-            font-size: 0.9em;
-            display: block;
-            margin-bottom: 0.2em;
-            color: #555;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | E-Healthcare Advisor</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
-    <div class="signup-container">
-        <h2>Welcome!</h2>
-        <h3>Sign Up</h3>
-        <form id="signupForm">
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName" required>
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" required>
-            </div>
-            <div class="form-group">
-                <label for="dob">Date of Birth</label>
-                <input type="date" id="dob" name="dob" required>
-            </div>
-            <div class="form-group">
-                <label for="place">Place</label>
-                <input type="text" id="place" name="place" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email ID</label>
-                <input type="text" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required>
-            </div>
-            <button type="submit">Sign Up</button>
-        </form>
-        <a href="login.html" class="login-link">Already have an account? Login</a>
-    </div>
+<body class="page-with-sticky-footer">
+  <main class="form-shell">
+    <section class="card">
+      <p class="kicker">Create Account</p>
+      <h1>Patient Registration</h1>
+      <form id="signupForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" required>
+          </div>
+          <div class="form-group">
+            <label for="place">City</label>
+            <input type="text" id="place" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" minlength="8" required>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" minlength="8" required>
+          </div>
+        </div>
+        <button class="btn" type="submit">Create Account</button>
+        <p class="helper" style="margin-top: 1rem;">Already registered? <a href="login.html">Login</a></p>
+        <div id="signupFeedback" class="feedback" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
 
-    <script>
-        document.getElementById('signupForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", async function (event) {
+      event.preventDefault();
 
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const dob = document.getElementById('dob').value;
-            const place = document.getElementById('place').value;
-            const email = document.getElementById('email').value;
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+      const dob = document.getElementById("dob").value;
+      const place = document.getElementById("place").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const username = document.getElementById("username").value.trim();
 
-            if (password !== confirmPassword) {
-                alert('Passwords do not match.');
-                return;
-            }
-            if (!email.includes('@')) {
-                alert('Invalid email address.');
-                return;
-            }
+      if (password !== confirmPassword) {
+        showFeedback("signupFeedback", "error", "Passwords do not match.");
+        return;
+      }
 
-            alert(`
-            Registration successful!
-            First Name: ${firstName}
-            Last Name: ${lastName}
-            Date of Birth: ${dob}
-            Place: ${place}
-            Email ID: ${email}
-            Username: ${username}
-            `);
-            window.location.href='login.html';
+      if (!email.includes("@")) {
+        showFeedback("signupFeedback", "error", "Please enter a valid email address.");
+        return;
+      }
+
+      try {
+        await AppApi.request("/auth/register", {
+          method: "POST",
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            dob,
+            place,
+            email,
+            username,
+            password
+          })
         });
-    </script>
+        showFeedback("signupFeedback", "success", "Registration complete. Redirecting to login...");
+        setTimeout(function () {
+          window.location.href = "login.html";
+        }, 900);
+      } catch (error) {
+        showFeedback("signupFeedback", "error", error.message);
+      }
+    });
+  </script>
 </body>
 </html>
+

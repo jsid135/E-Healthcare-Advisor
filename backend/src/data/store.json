@@ -1,0 +1,194 @@
+{
+  "users": [
+    {
+      "id": "u_demo_1",
+      "firstName": "Demo",
+      "lastName": "User",
+      "dob": "1998-01-01",
+      "place": "Chennai",
+      "email": "demo@ehealthcare.local",
+      "username": "demo",
+      "passwordHash": "$2a$10$0v30bZjiF8rQvLJkk76bNO94B74qpdA06x.YxEZGCwYHd6TfPXybO"
+    },
+    {
+      "id": "d80e69a0-8584-4bc8-bc4e-d16ec21ad1e7",
+      "firstName": "Bharath",
+      "lastName": "Gowda",
+      "dob": "2003-09-05",
+      "place": "Banglore",
+      "email": "jsidhikh@gmail.com",
+      "username": "bharth_gowda",
+      "passwordHash": "$2a$10$HaRiivZSd2iH9I4/icw0c.r/MQK.KCy/UH2CjJCStK0HTnkIMpvg6"
+    }
+  ],
+  "sessions": [],
+  "specializations": [
+    {
+      "id": "general",
+      "name": "General Medicine"
+    },
+    {
+      "id": "cardiology",
+      "name": "Cardiology"
+    },
+    {
+      "id": "dermatology",
+      "name": "Dermatology"
+    },
+    {
+      "id": "gastroenterology",
+      "name": "Gastroenterology"
+    },
+    {
+      "id": "neurology",
+      "name": "Neurology"
+    },
+    {
+      "id": "orthopedics",
+      "name": "Orthopedics"
+    },
+    {
+      "id": "pediatrics",
+      "name": "Pediatrics"
+    }
+  ],
+  "doctors": [
+    {
+      "id": "d1",
+      "name": "Dr. Smith",
+      "specialization": "general"
+    },
+    {
+      "id": "d2",
+      "name": "Dr. Jones",
+      "specialization": "general"
+    },
+    {
+      "id": "d3",
+      "name": "Dr. Arun",
+      "specialization": "cardiology"
+    },
+    {
+      "id": "d4",
+      "name": "Dr. Veena",
+      "specialization": "cardiology"
+    },
+    {
+      "id": "d5",
+      "name": "Dr. Santhosh",
+      "specialization": "dermatology"
+    },
+    {
+      "id": "d6",
+      "name": "Dr. Priya",
+      "specialization": "dermatology"
+    },
+    {
+      "id": "d7",
+      "name": "Dr. Giri",
+      "specialization": "gastroenterology"
+    },
+    {
+      "id": "d8",
+      "name": "Dr. Diya",
+      "specialization": "gastroenterology"
+    },
+    {
+      "id": "d9",
+      "name": "Dr. Brian",
+      "specialization": "neurology"
+    },
+    {
+      "id": "d10",
+      "name": "Dr. Naran",
+      "specialization": "neurology"
+    },
+    {
+      "id": "d11",
+      "name": "Dr. Bosh",
+      "specialization": "orthopedics"
+    },
+    {
+      "id": "d12",
+      "name": "Dr. Jane",
+      "specialization": "orthopedics"
+    },
+    {
+      "id": "d13",
+      "name": "Dr. Cena",
+      "specialization": "pediatrics"
+    },
+    {
+      "id": "d14",
+      "name": "Dr. Illa",
+      "specialization": "pediatrics"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "acdd49e9-d6ac-45da-a25c-e3a11ccf9ef2",
+      "userId": "d80e69a0-8584-4bc8-bc4e-d16ec21ad1e7",
+      "name": "bharat gowda",
+      "date": "2026-02-23",
+      "place": "baojp",
+      "specialization": "cardiology",
+      "doctor": "Dr. Arun",
+      "createdAt": "2026-02-21T17:14:04.420Z"
+    },
+    {
+      "id": "5c5e6420-637b-4e80-81e9-1edff9ecdc81",
+      "userId": "d80e69a0-8584-4bc8-bc4e-d16ec21ad1e7",
+      "name": "Bharath Gowda",
+      "date": "2026-02-25",
+      "place": "jlhjl",
+      "specialization": "cardiology",
+      "doctor": "Dr. Veena",
+      "createdAt": "2026-02-21T17:24:26.358Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": "a1",
+      "title": "Simple Daily Habits for Better Health",
+      "content": "Stay hydrated, move daily, and maintain regular sleep schedules.",
+      "author": "Care Team",
+      "createdAt": "2026-02-20T10:00:00.000Z",
+      "category": "general"
+    }
+  ],
+  "chats": [],
+  "articleCategories": [
+    {
+      "id": "general",
+      "name": "General Medicine"
+    },
+    {
+      "id": "cardiology",
+      "name": "Cardiology"
+    },
+    {
+      "id": "dermatology",
+      "name": "Dermatology"
+    },
+    {
+      "id": "gastroenterology",
+      "name": "Gastroenterology"
+    },
+    {
+      "id": "neurology",
+      "name": "Neurology"
+    },
+    {
+      "id": "orthopedics",
+      "name": "Orthopedics"
+    },
+    {
+      "id": "pediatrics",
+      "name": "Pediatrics"
+    },
+    {
+      "id": "nutrition",
+      "name": "Nutrition"
+    }
+  ]
+}

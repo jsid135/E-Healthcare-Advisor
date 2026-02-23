@@ -1,198 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book an Appointment</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f8ff;
-            color: #333;
-            line-height: 1.6;
-        }
-        header {
-            background-color: #008080;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-        }
-        main {
-            padding: 2em;
-            text-align: center;
-        }
-        h2 {
-            color: #0066cc;
-            margin-bottom: 1em;
-        }
-        #appointment-form {
-            background-color: white;
-            padding: 2em;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: left;
-        }
-        .form-group {
-            margin-bottom: 1.5em;
-        }
-        label {
-            display: block;
-            margin-bottom: 0.5em;
-            color: #008080;
-            font-weight: bold;
-        }
-        input[type="text"],
-        input[type="date"],
-        select {
-            width: 100%;
-            padding: 0.8em;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        select {
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background-image: url('data:image/svg+xml;utf8,<svg fill="%23008080" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path d="M2 0L0 2h4z"/></svg>');
-            background-repeat: no-repeat;
-            background-position: right 0.7em top 50%;
-            background-size: 0.65em auto;
-        }
-        select::-ms-expand {
-            display: none;
-        }
-        button {
-            background-color: #008080;
-            color: white;
-            padding: 0.8em 1.5em;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s ease;
-            margin-top: 1em;
-        }
-        button:hover {
-            background-color: #005e5e;
-        }
-        @media (max-width: 768px) {
-            #appointment-form {
-                padding: 1.5em;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment | E-Healthcare Advisor</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
-    <header>
-        <h1>Book an Appointment</h1>
-    </header>
-    <main>
-        <h2>Fill out the form to book your appointment:</h2>
-        <form id="appointment-form">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-                <label for="date">Appointment Date:</label>
-                <input type="date" id="date" name="date" required>
-            </div>
-             <div class="form-group">
-                <label for="place">Preferred Place:</label>
-                <input type="text" id="place" name="place" placeholder="Hospital/Clinic Name" required>
-            </div>
-            <div class="form-group">
-                <label for="specialization">Specialization:</label>
-                <select id="specialization" name="specialization">
-                    <option value="">Select Specialization</option>
-                    <option value="general">General Medicine</option>
-                    <option value="cardiology">Cardiology</option>
-                    <option value="dermatology">Dermatology</option>
-                    <option value="gastroenterology">Gastroenterology</option>
-                    <option value="neurology">Neurology</option>
-                    <option value="orthopedics">Orthopedics</option>
-                    <option value="pediatrics">Pediatrics</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="doctor">Preferred Doctor:</label>
-                <select id="doctor" name="doctor">
-                    <option value="">Select Doctor</option>
-                </select>
-            </div>
-            <button type="submit">Book Appointment</button>
-        </form>
-    </main>
-    <script>
-        const specializationSelect = document.getElementById('specialization');
-        const doctorSelect = document.getElementById('doctor');
+<body class="page-with-sticky-footer">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="project.html">E-Healthcare Advisor</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="project.html">Home</a>
+        <a href="doc.html">Specializations</a>
+        <a href="app.html">Appointments</a>
+        <a href="art.html">Articles</a>
+        <a href="contact.html">Contact</a>
+        <a href="ai.html">AI Assistant</a>
+      </nav>
+    </div>
+  </header>
 
-        const doctors = {
-            general: [
-                { name: "Dr. Smith", id: "smith" },
-                { name: "Dr. Jones", id: "jones" },
-                { name: "Dr. Brown", id: "brown"}
-            ],
-            cardiology: [
-                { name: "Dr. Heart", id: "heart" },
-                { name: "Dr. Vessel", id: "vessel" }
-            ],
-            dermatology: [
-                { name: "Dr. Skin", id: "skin" },
-                { name: "Dr. Pimple", id: "pimple" }
-            ],
-            gastroenterology: [
-                { name: "Dr. Gut", id: "gut" },
-                { name: "Dr.Digest", id: "digest"}
-            ],
-            neurology: [
-                {name: "Dr. Brain", id: "brain"},
-                {name: "Dr.Nerve", id:"nerve"}
-            ],
-            orthopedics: [
-                {name:"Dr.Bone", id:"bone"},
-                {name:"Dr.Joint", id:"joint"}
-            ],
-            pediatrics: [
-               {name: "Dr.Child", id:"child"},
-                {name: "Dr.Infant", id:"infant"}
-            ]
-        };
+  <main class="container">
+    <section class="card" style="max-width: 680px; margin: 0 auto;">
+      <p class="kicker">Appointment Desk</p>
+      <h1>Book an Appointment</h1>
+      <form id="appointmentForm" novalidate>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Appointment Date</label>
+            <input type="date" id="date" required>
+          </div>
+          <div class="form-group">
+            <label for="place">Preferred Clinic/Hospital</label>
+            <input type="text" id="place" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="specialization">Specialization</label>
+            <select id="specialization" required>
+              <option value="">Loading specializations...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="doctor">Preferred Doctor</label>
+            <select id="doctor" required>
+              <option value="">Select doctor</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn" type="submit">Submit Appointment Request</button>
+        <div id="appointmentFeedback" class="feedback" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
 
-        specializationSelect.addEventListener('change', () => {
-            const selectedSpecialization = specializationSelect.value;
-            doctorSelect.innerHTML = '<option value="">Select Doctor</option>';
-            if (selectedSpecialization) {
-                const availableDoctors = doctors[selectedSpecialization];
-                availableDoctors.forEach(doctor => {
-                    const option = document.createElement('option');
-                    option.value = doctor.id;
-                    option.textContent = doctor.name;
-                    doctorSelect.appendChild(option);
-                });
-            }
+  <footer class="site-footer">
+    <p>&copy; <span id="currentYear"></span> E-Healthcare Advisor</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    const specialization = document.getElementById("specialization");
+    const doctor = document.getElementById("doctor");
+    const appointmentForm = document.getElementById("appointmentForm");
+    const nameInput = document.getElementById("name");
+
+    async function validateSessionForBooking() {
+      const token = AppApi.getToken();
+      if (!token) {
+        showFeedback("appointmentFeedback", "error", "Please login first to book an appointment.");
+        return false;
+      }
+
+      try {
+        const data = await AppApi.request("/auth/me");
+        const user = data.user || AppApi.getUser() || {};
+        if (user.firstName || user.lastName) {
+          nameInput.value = [user.firstName || "", user.lastName || ""].join(" ").trim();
+        }
+        return true;
+      } catch (error) {
+        AppApi.clearAuth();
+        showFeedback("appointmentFeedback", "error", "Your session expired. Please login again.");
+        return false;
+      }
+    }
+
+    async function loadSpecializations() {
+      try {
+        const data = await AppApi.request("/specializations");
+        specialization.innerHTML = '<option value="">Select specialization</option>';
+        data.specializations.forEach(function (item) {
+          const option = document.createElement("option");
+          option.value = item.id;
+          option.textContent = item.name;
+          specialization.appendChild(option);
         });
+      } catch (error) {
+        specialization.innerHTML = '<option value="">Select specialization</option>';
+        showFeedback("appointmentFeedback", "error", "Could not load specializations. Start backend server.");
+      }
+    }
 
-        document.getElementById('appointment-form').addEventListener('submit', (event) => {
-            event.preventDefault();
+    specialization.addEventListener("change", async function () {
+      const selected = specialization.value;
+      doctor.innerHTML = '<option value="">Select doctor</option>';
+      if (!selected) return;
 
-            const name = document.getElementById('name').value;
-            const date = document.getElementById('date').value;
-            const place = document.getElementById('place').value;
-            const specialization = specializationSelect.value;
-            const doctor = doctorSelect.value;
-
-            if (specialization && doctor) {
-                alert(`Appointment booked for ${name} on ${date} at ${place} with ${doctorSelect.options[doctorSelect.selectedIndex].text}.`);
-            } else {
-                alert('Please select a specialization and doctor.');
-            }
+      try {
+        const data = await AppApi.request("/doctors?specialization=" + encodeURIComponent(selected));
+        data.doctors.forEach(function (doc) {
+          const option = document.createElement("option");
+          option.value = doc.name;
+          option.textContent = doc.name;
+          doctor.appendChild(option);
         });
-    </script>
+      } catch (error) {
+        showFeedback("appointmentFeedback", "error", error.message);
+      }
+    });
+
+    appointmentForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      if (!specialization.value || !doctor.value) {
+        showFeedback("appointmentFeedback", "error", "Please choose specialization and doctor.");
+        return;
+      }
+
+      try {
+        const ok = await validateSessionForBooking();
+        if (!ok) return;
+
+        await AppApi.request("/appointments", {
+          method: "POST",
+          body: JSON.stringify({
+            name: document.getElementById("name").value.trim(),
+            date: document.getElementById("date").value,
+            place: document.getElementById("place").value.trim(),
+            specialization: specialization.value,
+            doctor: doctor.value
+          })
+        });
+        showFeedback("appointmentFeedback", "success", "Appointment request submitted successfully.");
+        appointmentForm.reset();
+        doctor.innerHTML = '<option value="">Select doctor</option>';
+      } catch (error) {
+        if (error.status === 401) {
+          AppApi.clearAuth();
+          showFeedback("appointmentFeedback", "error", "Your session expired. Please login again.");
+          return;
+        }
+        showFeedback("appointmentFeedback", "error", error.message);
+      }
+    });
+
+    loadSpecializations();
+    validateSessionForBooking();
+  </script>
 </body>
 </html>

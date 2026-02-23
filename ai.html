@@ -1,137 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Healthcare Advisor - AI Chatbot</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f8ff;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-        header {
-            background-color: #008080;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-        }
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 1em;
-        }
-        #chat-container {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            height: 80%;
-            overflow-y: auto;
-            margin-bottom: 1em;
-            padding: 1em;
-            display: flex;
-            flex-direction: column;
-        }
-        #input-container {
-            display: flex;
-        }
-        input[type="text"] {
-            flex: 1;
-            padding: 0.8em;
-            border: 1px solid #ddd;
-            border-radius: 4px 0 0 4px;
-        }
-        button {
-            background-color: #008080;
-            color: white;
-            padding: 0.8em 1.5em;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-        }
-        .message {
-            margin-bottom: 0.5em;
-            padding: 0.5em;
-            border-radius: 4px;
-            max-width: 80%;
-        }
-        .user-message {
-            background-color: #e0f7fa;
-            align-self: flex-end;
-            text-align: right;
-        }
-        .bot-message {
-            background-color: #f0f0f0;
-            align-self: flex-start;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Assistant | E-Healthcare Advisor</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
-    <header>
-        <h1>AI Assistant</h1>
-    </header>
-    <main>
-        <div id="chat-container">
-            <div class="message bot-message">Welcome! How can I help you today?</div>
-        </div>
-        <div id="input-container">
-            <input type="text" id="messageInput" placeholder="Type your message...">
-            <button id="sendButton">Send</button>
-        </div>
-    </main>
-    <script>
-        const chatContainer = document.getElementById('chat-container');
-        const messageInput = document.getElementById('messageInput');
-        const sendButton = document.getElementById('sendButton');
+<body class="page-with-sticky-footer">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="project.html">E-Healthcare Advisor</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="project.html">Home</a>
+        <a href="doc.html">Specializations</a>
+        <a href="app.html">Appointments</a>
+        <a href="art.html">Articles</a>
+        <a href="contact.html">Contact</a>
+        <a href="ai.html">AI Assistant</a>
+      </nav>
+    </div>
+  </header>
 
-        sendButton.addEventListener('click', () => {
-            const messageText = messageInput.value;
-            if (messageText.trim() === '') return;
+  <main class="chat-wrap">
+    <section class="chat-box" id="chatContainer" aria-live="polite">
+      <div class="message bot-message">Welcome. I can help with appointment and specialization guidance.</div>
+    </section>
+    <section class="chat-input">
+      <input type="text" id="messageInput" placeholder="Type your message..." aria-label="Message">
+      <button class="btn" id="sendButton" type="button">Send</button>
+    </section>
+  </main>
 
-            const userMessage = document.createElement('div');
-            userMessage.classList.add('message', 'user-message');
-            userMessage.textContent = messageText;
-            chatContainer.appendChild(userMessage);
+  <footer class="site-footer">
+    <p>&copy; <span id="currentYear"></span> E-Healthcare Advisor</p>
+  </footer>
 
-            messageInput.value = ''; // Clear the input
+  <script src="assets/js/main.js"></script>
+  <script>
+    const chatContainer = document.getElementById("chatContainer");
+    const messageInput = document.getElementById("messageInput");
+    const sendButton = document.getElementById("sendButton");
 
-            // Simulate a bot response (replace with actual AI interaction)
-            setTimeout(() => {
-                const botResponse = document.createElement('div');
-                botResponse.classList.add('message', 'bot-message');
-                botResponse.textContent = getBotResponse(messageText);
-                chatContainer.appendChild(botResponse);
-                // Scroll to bottom of chat
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-            }, 500);
-             // Scroll to bottom of chat
-            chatContainer.scrollTop = chatContainer.scrollHeight;
+    function addMessage(text, type) {
+      const node = document.createElement("div");
+      node.className = "message " + type;
+      node.textContent = text;
+      chatContainer.appendChild(node);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const text = messageInput.value.trim();
+      if (!text) return;
+      addMessage(text, "user-message");
+      messageInput.value = "";
+      try {
+        const data = await AppApi.request("/chat", {
+          method: "POST",
+          body: JSON.stringify({ message: text })
         });
+        addMessage(data.reply, "bot-message");
+      } catch (error) {
+        addMessage(error.message + " Please login first.", "bot-message");
+      }
+    }
 
-        messageInput.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                sendButton.click();
-            }
-        });
-
-        function getBotResponse(userMessage) {
-            userMessage = userMessage.toLowerCase();
-            if (userMessage.includes("referral")) {
-                return "I can help you with referrals.  What is your concern?";
-            } else if (userMessage.includes("appointment")) {
-                return "I can help you book an appointment. What type of doctor do you need?"
-            }
-            else {
-                return "I am a placeholder and cannot understand that yet.  Please ask about referrals or appointments.";
-            }
-        }
-    </script>
+    sendButton.addEventListener("click", sendMessage);
+    messageInput.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") sendMessage();
+    });
+  </script>
 </body>
 </html>
+
